@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/24 17:00:49 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/24 17:02:38 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/24 17:05:01 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void		mandelbrot_col(t_env *e, int y, t_img *c)
 	x = 0;
 	while (x < W_WIDTH)
 	{
+		// MINX = -2.4 MAXX = 2.4
+		// MINY = -1.5 MAXY = 1.5
 		c->real = (-2.4) + (2.4 - (-2.4)) / W_WIDTH * x;
 		c->img = (-1.5) + (1.5 - (-1.5)) / W_HEIGHT * y;
 		z.real = 0;
