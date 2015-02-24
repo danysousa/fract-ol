@@ -6,7 +6,7 @@
 #    By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/13 14:40:06 by dsousa            #+#    #+#              #
-#    Updated: 2015/02/24 15:13:49 by dsousa           ###   ########.fr        #
+#    Updated: 2015/02/24 17:02:24 by dsousa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,10 @@ INC_SRC			=	$(addprefix $(INC_DIR), $(INC_FILES))
 
 SRC_DIR		=	srcs/
 
-FILES		=	$(NAME).c
+FILES		=	$(NAME).c\
+				tools.c\
+				julia.c\
+				mandelbrot.c
 
 SRC			=	$(addprefix $(SRC_DIR), $(FILES))
 
