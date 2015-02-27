@@ -6,11 +6,43 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/24 17:00:49 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/27 16:14:33 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/27 17:11:30 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
+#include <math.h>
+
+static t_img		mandelbrot_init(int x, int y, t_env *e, t_img *c)
+{
+	t_img		z;
+	double		min_x;
+	double		max_x;
+	double		min_y;
+	double		max_y;
+
+	min_x = (-e->fractal.max_x / e->fractal.zoom) + e->fractal.pos_x;
+	max_x = (e->fractal.max_x / e->fractal.zoom) + e->fractal.pos_x;
+	min_y = (-e->fractal.max_y / e->fractal.zoom) + e->fractal.pos_y;
+	max_y = (e->fractal.max_y / e->fractal.zoom) + e->fractal.pos_y;
+	c->real = min_x + ( max_x - min_x ) / W_WIDTH * (x);
+	c->img = min_y + ( max_y - min_y ) / W_HEIGHT * (y);
+	z.real = 0;
+	z.img = 0;
+	return (z);
+}
+
+static int		choose_color(int i)
+{
+	int			color;
+
+	if (i == MAX_IT)
+		color = rgb_to_i(240, 230, 10);
+	else
+		color = rgb_to_i(sin((float)i / ((float)MAX_IT / 2)) * 255, 0, 0);
+
+	return (color);
+}
 
 static void		mandelbrot_col(t_env *e, int y, t_img *c)
 {
@@ -23,12 +55,7 @@ static void		mandelbrot_col(t_env *e, int y, t_img *c)
 	x = 0;
 	while (x < W_WIDTH)
 	{
-		// MINX = -2.4 MAXX = 2.4
-		// MINY = -1.5 MAXY = 1.5
-		c->real = (-2.4) + (2.4 - (-2.4)) / W_WIDTH * x;
-		c->img = (-1.5) + (1.5 - (-1.5)) / W_HEIGHT * y;
-		z.real = 0;
-		z.img = 0;
+		z = mandelbrot_init(x, y, e, c);
 		i = 0;
 		while (i < MAX_IT)
 		{
@@ -40,7 +67,7 @@ static void		mandelbrot_col(t_env *e, int y, t_img *c)
 				break;
 			i++;
 		}
-		color = rgb_to_i((i + 42) % 256, (i + 120) % 256, 255 * (i < MAX_IT));
+		color = choose_color(i);
 		verif_print(e, x, y, color);
 		x++;
 	}

@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 12:27:45 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/27 16:25:01 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/27 17:23:16 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@
 # include <stdlib.h>
 # include <libft.h>
 # include "/usr/X11/include/X11/X.h"
+
+typedef struct		s_image
+{
+	void			*ptr;
+	char			*data;
+	int				bpp;
+	int				size_line;
+	int				endian;
+}					t_image;
 
 typedef struct		s_fractal
 {
@@ -50,6 +59,7 @@ typedef struct		s_env
 	void			*win;
 	t_fractal		fractal;
 	t_clic			clic;
+	t_image			img;
 }					t_env;
 
 typedef struct		s_img
