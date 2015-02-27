@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 15:11:23 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/27 17:57:49 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/27 18:30:54 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ static int		key_hook(int keycode, t_env *e)
 	return (0);
 }
 
-static void		init(t_env *e, int id)
+static void		init(t_env *e, char *argv[], int argc)
 {
 	e->mlx = mlx_init();
 	e->win = mlx_new_window(e->mlx, W_WIDTH, W_HEIGHT, "fractol");
-	e->fractal.id = id;
+	e->fractal.id = ft_atoi(argv[1]);
+	e->fractal.gen = argc > 2 ? 1 : 0;
 	e->fractal.zoom = 1.0;
 	e->fractal.pos_x = 0.0;
 	e->fractal.pos_y = 0.0;
@@ -55,7 +56,7 @@ int				main(int argc, char *argv[])
 
 	if (argc > 1)
 	{
-		init(&e, ft_atoi(argv[1]));
+		init(&e, argv, argc);
 		mlx_hook(e.win, MotionNotify, PointerMotionMask, hook, &e);
 		mlx_hook(e.win, ButtonPress, ButtonPressMask, press_hook, &e);
 		mlx_hook(e.win, ButtonRelease, ButtonReleaseMask, release_hook, &e);

@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 12:27:45 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/27 17:46:25 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/27 18:30:37 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct		s_fractal
 	float			pos_y;
 	double			max_x;
 	double			max_y;
+	int				gen;
 }					t_fractal;
 
 typedef struct		s_clic

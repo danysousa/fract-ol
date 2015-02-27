@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/24 17:00:49 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/27 17:11:30 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/27 18:31:05 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,17 @@ static t_img		mandelbrot_init(int x, int y, t_env *e, t_img *c)
 	return (z);
 }
 
-static int		choose_color(int i)
+static int		choose_color(int i, t_env *e)
 {
 	int			color;
+	int			tmp;
 
-	if (i == MAX_IT)
-		color = rgb_to_i(240, 230, 10);
+	if (e->fractal.gen)
+		tmp = (int)(MAX_IT + e->fractal.zoom / 1000);
+	else
+		tmp = MAX_IT;
+	if (i == tmp)
+		color = rgb_to_i(200, 190, 120);
 	else
 		color = rgb_to_i(sin((float)i / ((float)MAX_IT / 2)) * 255, 0, 0);
 
@@ -57,7 +62,7 @@ static void		mandelbrot_col(t_env *e, int y, t_img *c)
 	{
 		z = mandelbrot_init(x, y, e, c);
 		i = 0;
-		while (i < MAX_IT)
+		while (i < (int)(MAX_IT + (e->fractal.zoom / 1000) * e->fractal.gen))
 		{
 			tmp.img = z.img;
 			tmp.real = z.real;
@@ -67,7 +72,7 @@ static void		mandelbrot_col(t_env *e, int y, t_img *c)
 				break;
 			i++;
 		}
-		color = choose_color(i);
+		color = choose_color(i, e);
 		verif_print(e, x, y, color);
 		x++;
 	}
