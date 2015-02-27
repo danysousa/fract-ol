@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/24 17:00:49 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/24 17:05:01 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/27 16:14:33 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void		mandelbrot_col(t_env *e, int y, t_img *c)
 				break;
 			i++;
 		}
-		color = rgb_to_i(i % 256, 120, 255 * (i < MAX_IT));
+		color = rgb_to_i((i + 42) % 256, (i + 120) % 256, 255 * (i < MAX_IT));
 		verif_print(e, x, y, color);
 		x++;
 	}

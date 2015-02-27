@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 15:11:23 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/27 12:34:56 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/27 13:21:41 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void		init(t_env *e, int id)
 	e->mlx = mlx_init();
 	e->win = mlx_new_window(e->mlx, W_WIDTH, W_HEIGHT, "fractol");
 	e->fractal.id = id;
-	e->fractal.zoom = 0.0;
+	e->fractal.zoom = 1.0;
 	e->fractal.pos_x = 0.0;
 	e->fractal.pos_y = 0.0;
 	e->fractal.max_x = 2.4;
