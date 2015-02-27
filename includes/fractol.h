@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 12:27:45 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/24 17:03:30 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/27 12:17:09 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,32 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <libft.h>
+# include "/usr/X11/include/X11/X.h"
+
+typedef struct		s_fractal
+{
+	int				id;
+	float			zoom;
+	float			pos_x;
+	float			pos_y;
+	double			max_x;
+	double			max_y;
+}					t_fractal;
+
+typedef struct		s_clic
+{
+	int				active;
+	int				x;
+	int				y;
+}					t_clic;
 
 typedef struct		s_env
 {
 	void			*mlx;
 	void			*win;
-	int				fractal;
-	double			zoom;
-	double			x;
-	double			y;
+	t_fractal		fractal;
+	t_clic			clic;
 }					t_env;
-
 
 typedef struct		s_img
 {
@@ -50,10 +65,16 @@ int					rgb_to_i(int r, int g, int b);
 void				verif_print(t_env *e, int x, int y, int color);
 
 /*
+** KEY
+*/
+int					press_hook(int keycode, int x, int y, t_env *e);
+int					release_hook(int keycode, int x, int y, t_env *e);
+int					hook(int x, int y, t_env *e);
+
+/*
 ** JULIA
 */
 void				draw_julia(t_env *e);
-
 
 /*
 ** MENDELBROT

@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/24 15:35:25 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/24 17:00:06 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/27 12:42:33 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static void		julia_col(t_env *e, int y, t_img *c)
 	x = 0;
 	while (x < W_WIDTH)
 	{
-		z.real = (-2.4) + (2.4 - (-2.4)) / W_WIDTH * x;
-		z.img = (-1.5) + (1.5 - (-1.5)) / W_HEIGHT * y;
-		c->real = 50.0 / (long double)W_WIDTH;
-		c->img = 100.0 / (long double)W_HEIGHT;
+		z.real = (- e->fractal.max_x ) + ( e->fractal.max_x  - (- e->fractal.max_x )) / W_WIDTH * x;
+		z.img = (- e->fractal.max_y ) + ( e->fractal.max_y  - (- e->fractal.max_y )) / W_HEIGHT * y;
+		c->real = (e->clic.x * 0.5) / (long double)W_WIDTH;
+		c->img = (e->clic.y * 0.5) / (long double)W_HEIGHT;
 		i = 0;
 		while (i < MAX_IT)
 		{
