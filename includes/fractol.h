@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 12:27:45 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/27 17:23:16 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/27 17:46:25 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define ORIGINE_Y 700
 # define W_WIDTH 700
 # define W_HEIGHT 500
-# define MAX_IT 42
+# define MAX_IT 60
 # include <mlx.h>
 # include <unistd.h>
 # include <stdio.h>

@@ -6,27 +6,18 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 15:11:23 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/27 17:41:55 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/27 17:57:49 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-// static int		expose_hook(t_env *e)
-// {
-// 	if (e->fractal.id == 1)
-// 		draw_julia(e);
-// 	else
-// 		draw_mandelbrot(e);
-// 	return (0);
-// }
-
-static int		key_hook(int keycode)
+static int		key_hook(int keycode, t_env *e)
 {
 	if (keycode == 65307)
 		exit(0);
-	ft_putnbr(keycode);
-	ft_putchar('\n');
+	if (keycode == 32)
+		e->clic.active = e->clic.active ? 0 : 1;
 	return (0);
 }
 
@@ -54,9 +45,7 @@ int				loop(t_env *e)
 		draw_julia(e);
 	else
 		draw_mandelbrot(e);
-
 	mlx_put_image_to_window(e->mlx, e->win, e->img.ptr, 0, 0);
-
 	return (0);
 }
 
@@ -71,7 +60,6 @@ int				main(int argc, char *argv[])
 		mlx_hook(e.win, ButtonPress, ButtonPressMask, press_hook, &e);
 		mlx_hook(e.win, ButtonRelease, ButtonReleaseMask, release_hook, &e);
 		mlx_key_hook(e.win, key_hook, &e);
-		// mlx_expose_hook(e.win, expose_hook, &e);
 		mlx_loop_hook(e.mlx, loop, &e);
 		mlx_loop(e.mlx);
 	}
