@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 11:21:44 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/27 18:15:29 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/03/02 14:50:58 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void		zoom(int keycode, double x, double y, t_env *e)
 
 	direction = keycode == 4 ? 0.9 : 1.05;
 	e->fractal.zoom *= (direction);
-	e->fractal.pos_x += (x / (W_WIDTH / 2) ) / e->fractal.zoom;
-	e->fractal.pos_y += (y / (W_HEIGHT / 2) ) / e->fractal.zoom;
+	e->fractal.pos_x += (x / (W_WIDTH / 2)) / e->fractal.zoom;
+	e->fractal.pos_y += (y / (W_HEIGHT / 2)) / e->fractal.zoom;
 }
 
 int				press_hook(int keycode, int x, int y, t_env *e)

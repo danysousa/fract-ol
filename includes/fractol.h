@@ -6,12 +6,12 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 12:27:45 by dsousa            #+#    #+#             */
-/*   Updated: 2015/03/02 14:24:28 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/03/02 14:45:48 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
 # define ZOOM 10
 # define ORIGINE_X 500

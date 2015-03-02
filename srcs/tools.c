@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/24 15:30:05 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/27 17:40:08 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/03/02 14:51:39 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int			rgb_to_i(int r, int g, int b)
 	rgb = r;
 	rgb = (rgb << 8) + g;
 	rgb = (rgb << 8) + b;
-
 	return (rgb);
 }
 

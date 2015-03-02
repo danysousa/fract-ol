@@ -6,14 +6,14 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/24 17:00:49 by dsousa            #+#    #+#             */
-/*   Updated: 2015/03/02 14:27:53 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/03/02 14:50:17 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 #include <math.h>
 
-static t_img		mandelbrot_init(int x, int y, t_env *e, t_img *c)
+static t_img	mandelbrot_init(int x, int y, t_env *e, t_img *c)
 {
 	t_img		z;
 	double		min_x;
@@ -25,8 +25,8 @@ static t_img		mandelbrot_init(int x, int y, t_env *e, t_img *c)
 	max_x = (e->fractal.max_x / e->fractal.zoom) + e->fractal.pos_x;
 	min_y = (-e->fractal.max_y / e->fractal.zoom) + e->fractal.pos_y;
 	max_y = (e->fractal.max_y / e->fractal.zoom) + e->fractal.pos_y;
-	c->real = min_x + ( max_x - min_x ) / W_WIDTH * (x);
-	c->img = min_y + ( max_y - min_y ) / W_HEIGHT * (y);
+	c->real = min_x + (max_x - min_x) / W_WIDTH * (x);
+	c->img = min_y + (max_y - min_y) / W_HEIGHT * (y);
 	z.real = 0;
 	z.img = 0;
 	return (z);
@@ -47,7 +47,6 @@ static int		choose_color(int i, t_env *e)
 		color = rgb_to_i(sin((float)i / ((float)MAX_IT / 1.5)) * 255\
 			, sin((float)i / ((float)MAX_IT / 2)) * 255 \
 			, sin((float)i / ((float)MAX_IT / 3.5)) * 255);
-
 	return (color);
 }
 
@@ -71,7 +70,7 @@ static void		mandelbrot_col(t_env *e, int y, t_img *c)
 			z.real = tmp.real * tmp.real - tmp.img * tmp.img + c->real;
 			z.img = 2 * tmp.real * tmp.img + c->img;
 			if (z.real * z.real + z.img * z.img >= 4)
-				break;
+				break ;
 			i++;
 		}
 		color = choose_color(i, e);
@@ -84,7 +83,6 @@ void			draw_mandelbrot(t_env *e)
 {
 	int		y;
 	t_img	img;
-
 
 	y = 0;
 	while (y < W_HEIGHT)
