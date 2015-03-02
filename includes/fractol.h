@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 12:27:45 by dsousa            #+#    #+#             */
-/*   Updated: 2015/03/02 12:11:26 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/03/02 14:24:28 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ void				draw_mandelbrot(t_env *e);
 void				draw_burning_ship(t_env *e);
 
 /*
-** BUDDHABROT
+** BRAIN
 */
-void				draw_buddhabrot(t_env *e);
+void				draw_brain(t_env *e);
 
 #endif

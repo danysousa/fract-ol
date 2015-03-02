@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/24 17:00:49 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/27 18:31:05 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/03/02 14:27:53 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ static int		choose_color(int i, t_env *e)
 	if (i == tmp)
 		color = rgb_to_i(200, 190, 120);
 	else
-		color = rgb_to_i(sin((float)i / ((float)MAX_IT / 2)) * 255, 0, 0);
+		color = rgb_to_i(sin((float)i / ((float)MAX_IT / 1.5)) * 255\
+			, sin((float)i / ((float)MAX_IT / 2)) * 255 \
+			, sin((float)i / ((float)MAX_IT / 3.5)) * 255);
 
 	return (color);
 }

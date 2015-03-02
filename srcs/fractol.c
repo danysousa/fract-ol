@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 15:11:23 by dsousa            #+#    #+#             */
-/*   Updated: 2015/03/02 12:19:21 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/03/02 14:24:17 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int				loop(t_env *e)
 	else if (e->fractal.id == 2)
 		draw_burning_ship(e);
 	else if (e->fractal.id == 3)
-		draw_buddhabrot(e);
+		draw_brain(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->img.ptr, 0, 0);
 	return (0);
 }
@@ -67,7 +67,7 @@ void			ft_usage(void)
 	ft_putendl("(0) Julia");
 	ft_putendl("(1) Mandelbrot");
 	ft_putendl("(2) Burning Ship");
-	ft_putendl("(3) Buddhabrot");
+	ft_putendl("(3) Brain");
 	exit(-1);
 }
 

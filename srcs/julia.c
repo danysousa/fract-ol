@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/24 15:35:25 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/27 17:09:37 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/03/02 14:26:34 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static int		choose_color(int i)
 	if (i == MAX_IT)
 		color = rgb_to_i(240, 230, 10);
 	else
-		color = rgb_to_i(sin((float)i / ((float)MAX_IT / 2)) * 255, 0, 0);
+		color = rgb_to_i(sin((float)i / ((float)MAX_IT / 2)) * 255,\
+		 sin((float)i / ((float)MAX_IT / 3.5)) * 255, 0);
 
 	return (color);
 }

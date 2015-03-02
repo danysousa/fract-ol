@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   buddhabrot.c                                       :+:      :+:    :+:   */
+/*   brain.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 12:10:11 by dsousa            #+#    #+#             */
-/*   Updated: 2015/03/02 12:38:03 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/03/02 14:25:34 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 #include <math.h>
 
-static t_img		buddhabrot_init(int x, int y, t_env *e, t_img *c)
+
+static t_img		brain_init(int x, int y, t_env *e, t_img *c)
 {
 	t_img		z;
 	double		min_x;
@@ -25,31 +26,27 @@ static t_img		buddhabrot_init(int x, int y, t_env *e, t_img *c)
 	max_x = (e->fractal.max_x / e->fractal.zoom) + e->fractal.pos_x;
 	min_y = (-e->fractal.max_y / e->fractal.zoom) + e->fractal.pos_y;
 	max_y = (e->fractal.max_y / e->fractal.zoom) + e->fractal.pos_y;
-	c->real = min_x + ( max_x - min_x ) / W_WIDTH * (x);
-	c->img = min_y + ( max_y - min_y ) / W_HEIGHT * (y);
-	z.real = 0;
-	z.img = 0;
+	z.real = min_x + ( max_x - min_x ) / W_WIDTH * (x);
+	z.img = min_y + ( max_y - min_y ) / W_HEIGHT * (y);
+	c->real = 0.6;
+	c->img = 0.2;
 	return (z);
 }
 
-static int		choose_color(int i, t_env *e)
+static int		choose_color(int i)
 {
 	int			color;
-	int			tmp;
 
-	if (e->fractal.gen)
-		tmp = (int)(MAX_IT + e->fractal.zoom / 1000);
+	if (i == MAX_IT)
+		color = rgb_to_i(240, 230, 10);
 	else
-		tmp = MAX_IT;
-	if (i == tmp)
-		color = rgb_to_i(200, 190, 120);
-	else
-		color = rgb_to_i(sin((float)i / ((float)MAX_IT / 2)) * 255, 0, 0);
+		color = rgb_to_i(sin((float)i / ((float)MAX_IT / 4)) * 255, \
+			sin((float)i / ((float)MAX_IT)) * 255, 0);
 
 	return (color);
 }
 
-static void		buddhabrot_col(t_env *e, int y, t_img *c)
+static void		brain_col(t_env *e, int y, t_img *c)
 {
 	int			x;
 	int			i;
@@ -60,25 +57,25 @@ static void		buddhabrot_col(t_env *e, int y, t_img *c)
 	x = 0;
 	while (x < W_WIDTH)
 	{
-		z = buddhabrot_init(x, y, e, c);
+		z = brain_init(x, y, e, c);
 		i = 0;
-		while (i < (int)(MAX_IT + (e->fractal.zoom / 1000) * e->fractal.gen))
+		while (i < MAX_IT)
 		{
 			tmp.img = z.img;
 			tmp.real = z.real;
-			z.real = 4 * tmp.real * tmp.real - tmp.img * tmp.img + c->real;
-			z.img = - 1 * tmp.real * tmp.img + c->img;;
+			z.real = tmp.real * tmp.real - tmp.img * tmp.img + c->real;
+			z.img = 2 * fabs(tmp.real * tmp.img) + c->img;
 			if (z.real * z.real + z.img * z.img >= 4)
 				break;
 			i++;
 		}
-		color = choose_color(i, e);
+		color = choose_color(i);
 		verif_print(e, x, y, color);
 		x++;
 	}
 }
 
-void			draw_buddhabrot(t_env *e)
+void			draw_brain(t_env *e)
 {
 	int		y;
 	t_img	img;
@@ -87,6 +84,6 @@ void			draw_buddhabrot(t_env *e)
 	y = 0;
 	while (y < W_HEIGHT)
 	{
-		buddhabrot_col(e, y++, &img);
+		brain_col(e, y++, &img);
 	}
 }
