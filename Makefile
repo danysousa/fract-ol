@@ -6,7 +6,7 @@
 #    By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/13 14:40:06 by dsousa            #+#    #+#              #
-#    Updated: 2015/02/27 11:21:56 by dsousa           ###   ########.fr        #
+#    Updated: 2015/03/02 12:17:55 by dsousa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ FILES		=	$(NAME).c\
 				tools.c\
 				julia.c\
 				mandelbrot.c\
-				key.c
+				key.c\
+				burning_ship.c\
+				buddhabrot.c\
 
 SRC			=	$(addprefix $(SRC_DIR), $(FILES))
 
